@@ -14,8 +14,11 @@ import java.util.Optional;
 public class RareService {
     private final RareRepository rareRepository;
 
-    public void getRare() {
-        Optional<Rare> rare = rareRepository.findById(1L);
-        log.info("Rare : {}", rare.toString());
+    public void addRare(Rare rare) {
+        rareRepository.save(rare);
+    }
+
+    public Optional<Rare> getRare(String rareId) {
+        return rareRepository.findByRareId(rareId);
     }
 }
