@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis-container
+    restart: always
+    ports:
+      - "6379:6379"  # 호스트의 6379 포트를 컨테이너의 6379 포트로 매핑
+    volumes:
+      - /Users/ansangpil/Project/docker-volumes/redis:/data  # Redis 데이터를 로컬에 저장
+      - ./redis.conf:/usr/local/etc/redis/redis.conf  # Redis 설정 파일 마운트 (선택)
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]  # 설정 파일을 사용하여 Redis 실행
+    networks:
+      - redis-network
+
+networks:
+  redis-network:
+    driver: bridge
