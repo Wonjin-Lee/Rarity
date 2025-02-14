@@ -1,0 +1,15 @@
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/my_database?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: my_user
+#    password: my_password
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    hibernate:
+#      ddl-auto: update  # 옵션: none, update, create, create-drop
+#    show-sql: true      # SQL 쿼리 로그 출력
+#    properties:
+#      hibernate:
+#        format_sql: true # SQL 포맷 정리
