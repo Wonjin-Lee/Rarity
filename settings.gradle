@@ -1,3 +1,6 @@
 rootProject.name = 'rarity'
 include 'rarity-app-api'
+include 'rarity-domain-mysql'
+include 'rarity-client-kafka'
+include 'rarity-domain-redis'
 
