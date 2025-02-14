@@ -8,4 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RarityController {
     private final RarityService rarityService;
+
 }

@@ -4,10 +4,12 @@ import io.dapsimni.rarity.domain.mysql.domain.Rare;
 import io.dapsimni.rarity.domain.mysql.service.RareService;
 import io.dapsimni.rarity.domain.redis.service.RedisService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class RarityService {
@@ -23,10 +25,16 @@ public class RarityService {
         );
     }
 
-    public void participate(String rareId, String userId) {
+    public boolean participate(String rareId, String userId) {
         int quantity = Integer.parseInt(redisService.getValue("rare:" + rareId + ":quantity"));
 
-        redisService.increment("");
+        Long currentCount = redisService.increment("rare:" + rareId + ":count");
 
+        if (currentCount > quantity) {
+            redisService.decrement("rare:" + rareId + ":count");
+            return false;
+        }
+
+        return true;
     }
 }
