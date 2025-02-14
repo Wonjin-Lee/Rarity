@@ -1,7 +1,7 @@
 package io.dapsimni.rarity.app.api.service;
 
 import io.dapsimni.rarity.domain.mysql.domain.Rare;
-import io.dapsimni.rarity.domain.mysql.service.RareDomainService;
+import io.dapsimni.rarity.domain.mysql.service.RareService;
 import io.dapsimni.rarity.domain.redis.service.RedisService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 @Service
 public class RarityService {
-    private final RareDomainService rareDomainService;
+    private final RareService rareService;
     private final RedisService redisService;
 
     public void createRare(Rare rare) {
