@@ -1,6 +1,5 @@
 package io.dapsimni;
 
-import io.dapsimni.rarity.domain.mysql.service.SampleService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
