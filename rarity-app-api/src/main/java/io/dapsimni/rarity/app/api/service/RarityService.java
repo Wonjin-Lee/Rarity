@@ -6,6 +6,7 @@ import io.dapsimni.rarity.domain.redis.service.RedisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +17,9 @@ public class RarityService {
     private final RareService rareService;
     private final RedisService redisService;
 
+    @Transactional
     public void createRare(Rare rare) {
+        rareService.addRare(rare);
         redisService.setValue(
                 "rare:" + rare.getRareId() + ":quantity",
                 String.valueOf(rare.getQuantity()),
@@ -25,7 +28,7 @@ public class RarityService {
         );
     }
 
-    public boolean participate(String rareId, String userId) {
+    public boolean hasQuantity(String rareId) {
         int quantity = Integer.parseInt(redisService.getValue("rare:" + rareId + ":quantity"));
 
         Long currentCount = redisService.increment("rare:" + rareId + ":count");
@@ -36,5 +39,11 @@ public class RarityService {
         }
 
         return true;
+    }
+
+    public void participate(String rareId, String userId) {
+        if (hasQuantity(rareId)) {
+            // TODO Kafka 연동
+        }
     }
 }
