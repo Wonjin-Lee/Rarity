@@ -1,10 +1,7 @@
 package io.dapsimni.rarity.domain.mysql.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @ToString
 @Getter
@@ -18,4 +15,10 @@ public class Win extends BaseEntity {
 
     private String userId;
     private String rareId;
+
+    @Builder
+    public Win(String userId, String rareId) {
+        this.userId = userId;
+        this.rareId = rareId;
+    }
 }
