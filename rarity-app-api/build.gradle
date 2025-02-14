@@ -2,6 +2,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    implementation project(':rarity-domain-mysql')  // 공통 모듈 의존성 추가
+    implementation project(':rarity-domain-mysql')
+    implementation project(':rarity-domain-redis')
     implementation 'org.springframework.boot:spring-boot-starter-web'
 }
