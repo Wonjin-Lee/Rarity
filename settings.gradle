@@ -1,0 +1,3 @@
+rootProject.name = 'rarity'
+include 'rarity-app-api'
+
