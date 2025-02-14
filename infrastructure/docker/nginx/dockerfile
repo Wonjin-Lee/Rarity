@@ -1,0 +1,14 @@
+# Base image: OpenJDK 17
+FROM openjdk:17-jdk
+
+# 작업 디렉토리 생성
+WORKDIR /app
+
+# JAR 파일을 컨테이너로 복사
+COPY target/*.jar app.jar
+
+# 실행 포트 설정
+EXPOSE 8080
+
+# JAR 파일 실행
+ENTRYPOINT ["java", "-jar", "app.jar"]

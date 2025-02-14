@@ -1,8 +1,12 @@
+
+
 spring:
   kafka:
-    bootstrap-servers: localhost:9092  # Kafka 서버 주소
+    bootstrap-servers: 192.168.0.34:9092  # Kafka 서버 주소
     consumer:
       group-id: my-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+server:
+  port: 8083
