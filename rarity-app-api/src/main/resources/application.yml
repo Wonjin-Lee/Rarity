@@ -1,0 +1,4 @@
+spring:
+  config:
+    import:
+      - 'classpath:rarity-mysql-application.yml'
